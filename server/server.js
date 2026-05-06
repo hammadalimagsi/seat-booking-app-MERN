@@ -18,14 +18,8 @@ connectDB()
   .catch(err => console.error('Initial DB connect error:', err));
 
 // Security middleware
-app.use(helmet({
-  contentSecurityPolicy: false,
-}));
-app.use(cors({
-  origin: true,
-  credentials: true
-}));
-app.use(express.json({ limit: '10kb' }));
+app.use(cors());
+app.use(express.json());
 
 // Rate limiting for auth routes
 const authLimiter = rateLimit({
