@@ -13,17 +13,17 @@ const App = () => {
 
   if (loading) {
     return (
-      <div className="loading-screen">
-        <div className="spinner"></div>
-        <p>Loading DineReserve...</p>
+      <div className="min-h-screen bg-primary flex flex-col items-center justify-center p-4">
+        <div className="w-16 h-16 border-4 border-accent/10 border-t-accent rounded-full animate-spin mb-6"></div>
+        <p className="text-slate-500 font-bold animate-pulse uppercase tracking-[0.2em] text-xs">Initializing Secure Environment...</p>
       </div>
     );
   }
 
   return (
-    <div className="app">
+    <div className="min-h-screen bg-primary font-sans text-slate-200 selection:bg-accent/30 selection:text-white">
       <Navbar />
-      <main className="main-content">
+      <main className="animate-in fade-in duration-1000">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

@@ -23,15 +23,18 @@ const Hall = () => {
 
   if (loading) {
     return (
-      <div className="loading-screen">
-        <div className="spinner"></div>
-        <p>Loading dining hall...</p>
+      <div className="min-h-[80vh] flex flex-col items-center justify-center p-4">
+        <div className="relative w-16 h-16 mb-6">
+          <div className="absolute inset-0 border-4 border-accent/10 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-transparent border-t-accent rounded-full animate-spin"></div>
+        </div>
+        <p className="text-slate-500 font-bold animate-pulse uppercase tracking-[0.2em] text-xs">Synchronizing Hall Layout...</p>
       </div>
     );
   }
 
   return (
-    <div className="hall-page">
+    <div className="min-h-screen bg-primary pb-20 pt-10">
       <SeatMap seats={seats} onUpdate={fetchSeats} />
     </div>
   );

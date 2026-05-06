@@ -5,34 +5,37 @@ const Home = () => {
   const { user } = useAuth();
 
   return (
-    <div className="home-page">
-      <section className="hero">
-        <div className="hero-bg">
-          <div className="hero-orb orb-1"></div>
-          <div className="hero-orb orb-2"></div>
-          <div className="hero-orb orb-3"></div>
+    <div className="bg-primary text-white overflow-hidden selection:bg-accent/40">
+      <section className="relative min-h-[calc(100vh-64px)] flex flex-col lg:flex-row items-center justify-center px-6 md:px-12 py-20 lg:py-0 gap-12 max-w-7xl mx-auto overflow-hidden">
+        {/* Animated Background Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-accent rounded-full blur-[100px] opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-1/4 -right-24 w-80 h-80 bg-purple-600 rounded-full blur-[100px] opacity-10 animate-bounce [animation-duration:8s]"></div>
         </div>
-        <div className="hero-content">
-          <div className="hero-badge">🍽️ Dining Hall Booking System</div>
-          <h1 className="hero-title">
+
+        <div className="relative z-10 flex-1 max-w-2xl text-center lg:text-left">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-accent text-xs font-bold uppercase tracking-widest">
+            <span>🍽️</span> Dining Hall Booking System
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight mb-6">
             Reserve Your
-            <span className="gradient-text"> Dining Seat</span>
+            <span className="block bg-gradient-to-r from-accent via-purple-400 to-indigo-400 bg-clip-text text-transparent">Dining Seat</span>
           </h1>
-          <p className="hero-description">
-            Book your preferred seat at the dining hall with just a click. 
-            Real-time availability, instant confirmation, one seat per student.
+          <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed font-medium">
+            Experience effortless dining with Pakistan's most advanced seat booking system. 
+            Real-time maps, instant confirmation, and elite security.
           </p>
-          <div className="hero-actions">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             {user ? (
-              <Link to="/hall" className="btn-hero">
-                🪑 View Hall & Book
+              <Link to="/hall" className="w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-accent to-indigo-600 text-white rounded-2xl font-bold shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3">
+                <span className="text-xl">🪑</span> View Hall & Book
               </Link>
             ) : (
               <>
-                <Link to="/register" className="btn-hero">
+                <Link to="/register" className="w-full sm:w-auto px-8 py-5 bg-gradient-to-r from-accent to-indigo-600 text-white rounded-2xl font-bold shadow-xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all text-center">
                   Get Started
                 </Link>
-                <Link to="/login" className="btn-hero-outline">
+                <Link to="/login" className="w-full sm:w-auto px-8 py-5 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-2xl font-bold transition-all text-center">
                   Sign In
                 </Link>
               </>
@@ -40,22 +43,22 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="mini-hall">
-            <div className="mini-head">
-              <div className="mini-seat teacher">T</div>
-              <div className="mini-seat teacher">T</div>
+        <div className="relative z-10 flex-1 hidden lg:flex justify-center items-center">
+          <div className="p-10 bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-[3rem] shadow-2xl scale-110">
+            <div className="flex justify-center gap-4 mb-4">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 font-bold">T</div>
+              <div className="w-10 h-10 rounded-lg bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 font-bold">T</div>
             </div>
-            <div className="mini-table-area">
-              <div className="mini-col">
+            <div className="flex items-start gap-3">
+              <div className="flex flex-col gap-3">
                 {[1,2,3,4,5].map(i => (
-                  <div key={`l${i}`} className={`mini-seat ${i <= 2 ? 'booked' : 'free'}`}></div>
+                  <div key={`l${i}`} className={`w-10 h-10 rounded-lg ${i <= 2 ? 'bg-rose-500/30 border border-rose-500/50' : 'bg-emerald-500/30 border border-emerald-500/50 border-dashed'}`}></div>
                 ))}
               </div>
-              <div className="mini-table"></div>
-              <div className="mini-col">
+              <div className="w-10 h-[240px] bg-gradient-to-b from-accent/20 to-transparent border border-white/5 rounded-full"></div>
+              <div className="flex flex-col gap-3">
                 {[1,2,3,4,5].map(i => (
-                  <div key={`r${i}`} className={`mini-seat ${i === 1 ? 'booked' : 'free'}`}></div>
+                  <div key={`r${i}`} className={`w-10 h-10 rounded-lg ${i === 1 ? 'bg-rose-500/30 border border-rose-500/50' : 'bg-emerald-500/30 border border-emerald-500/50 border-dashed'}`}></div>
                 ))}
               </div>
             </div>
@@ -63,22 +66,22 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="features">
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">🔐</div>
-            <h3>Secure Booking</h3>
-            <p>One account per student, one seat per booking. Anti-fraud device verification included.</p>
+      <section className="px-6 md:px-12 py-24 bg-slate-900/40">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="p-8 bg-slate-900 border border-white/5 rounded-3xl hover:border-accent/40 transition-all group">
+            <div className="text-4xl mb-6 group-hover:scale-110 transition-transform origin-left">🔐</div>
+            <h3 className="text-xl font-bold mb-3">Anti-Fraud Security</h3>
+            <p className="text-slate-500 text-sm leading-relaxed font-medium">One account per student, one seat per booking. Locked by advanced device fingerprint verification.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon">⚡</div>
-            <h3>Real-Time Updates</h3>
-            <p>See seat availability instantly. Book or cancel with a single click.</p>
+          <div className="p-8 bg-slate-900 border border-white/5 rounded-3xl hover:border-accent/40 transition-all group">
+            <div className="text-4xl mb-6 group-hover:scale-110 transition-transform origin-left">⚡</div>
+            <h3 className="text-xl font-bold mb-3">Zero Latency</h3>
+            <p className="text-slate-500 text-sm leading-relaxed font-medium">Real-time availability updates powered by blazing fast responses. Instant seat confirmation.</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon">🗺️</div>
-            <h3>Visual Hall Map</h3>
-            <p>Interactive dining hall layout showing all 40 seats with real-time status.</p>
+          <div className="p-8 bg-slate-900 border border-white/5 rounded-3xl hover:border-accent/40 transition-all group">
+            <div className="text-4xl mb-6 group-hover:scale-110 transition-transform origin-left">🏛️</div>
+            <h3 className="text-xl font-bold mb-3">Interactive Hall</h3>
+            <p className="text-slate-500 text-sm leading-relaxed font-medium">A stunning visual map of the entire dining hall layout. Tap any available seat to claim it instantly.</p>
           </div>
         </div>
       </section>
