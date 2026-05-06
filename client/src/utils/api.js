@@ -9,11 +9,22 @@ const getHeaders = () => {
 };
 
 const handleResponse = async (response) => {
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.message || 'Something went wrong');
+  const contentType = response.headers.get('content-type');
+  
+  if (contentType && contentType.includes('application/json')) {
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || `Error ${response.status}: ${response.statusText}`);
+    }
+    return data;
+  } else {
+    // If not JSON, it might be an HTML error page (404/500)
+    const text = await response.text();
+    if (!response.ok) {
+      throw new Error(`Server Error (${response.status}): The server returned a non-JSON response. Check if your API URL is correct.`);
+    }
+    return text;
   }
-  return data;
 };
 
 export const api = {
