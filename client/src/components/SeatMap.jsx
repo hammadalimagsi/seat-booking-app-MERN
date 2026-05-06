@@ -139,7 +139,7 @@ const SeatMap = ({ seats, onUpdate }) => {
             <div className="relative flex flex-col w-12 sm:w-16 mx-1 sm:mx-2 bg-gradient-to-b from-white/5 to-white/[0.02] border-x border-white/5">
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/20 via-purple-500/20 to-accent/20"></div>
               {Array.from({ length: rowCount }, (_, i) => (
-                <div key={i} className="h-[40px] xs:h-[44px] sm:h-[46px] mt-[6.5px] mb-[1.5px] first:mt-0 flex items-center justify-between px-1 z-10">
+                <div key={i} className="h-[44px] xs:h-[48px] sm:h-[52px] mt-[6.5px] mb-[1.5px] first:mt-0 flex items-center justify-between px-1 z-10">
                   <div className="text-[10px] opacity-40 grayscale hover:grayscale-0 transition-all">🍽️</div>
                   <div className="text-[10px] opacity-40 grayscale hover:grayscale-0 transition-all">🍽️</div>
                 </div>
