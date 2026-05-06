@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Hall from './pages/Hall';
+import AdminPanel from './pages/AdminPanel';
 
 const App = () => {
   const { user, loading } = useAuth();
@@ -41,6 +42,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/admin" element={<AdminPanel />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

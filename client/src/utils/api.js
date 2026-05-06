@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
@@ -63,6 +63,42 @@ export const api = {
     const res = await fetch(`${API_BASE}/seats/cancel`, {
       method: 'POST',
       headers: getHeaders()
+    });
+    return handleResponse(res);
+  },
+
+  // Admin
+  adminReset: async (password) => {
+    const res = await fetch(`${API_BASE}/seats/admin/reset`, {
+      method: 'POST',
+      headers: {
+        ...getHeaders(),
+        'x-admin-password': password
+      }
+    });
+    return handleResponse(res);
+  },
+
+  adminIncrease: async (password, count) => {
+    const res = await fetch(`${API_BASE}/seats/admin/increase`, {
+      method: 'POST',
+      headers: {
+        ...getHeaders(),
+        'x-admin-password': password
+      },
+      body: JSON.stringify({ count })
+    });
+    return handleResponse(res);
+  },
+
+  adminDecrease: async (password, count) => {
+    const res = await fetch(`${API_BASE}/seats/admin/decrease`, {
+      method: 'POST',
+      headers: {
+        ...getHeaders(),
+        'x-admin-password': password
+      },
+      body: JSON.stringify({ count })
     });
     return handleResponse(res);
   }

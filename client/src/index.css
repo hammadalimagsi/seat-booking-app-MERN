@@ -457,8 +457,24 @@ a:hover { color: #a5b4fc; }
   width: 1px; background: linear-gradient(180deg, var(--accent-glow), var(--purple-glow));
 }
 
-.table-segment { height: 52px; display: flex; align-items: center; justify-content: center; }
-.table-divider { width: 20px; height: 1px; background: var(--border); }
+.table-segment { 
+  height: 52px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; /* Gap between left and right settings */
+  position: relative;
+}
+
+.table-prop {
+  font-size: 1rem; 
+  opacity: 0.4; 
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.table-prop.left { margin-right: 4px; }
+.table-prop.right { margin-left: 4px; }
 
 /* ===== SEAT COMPONENT ===== */
 .seat {

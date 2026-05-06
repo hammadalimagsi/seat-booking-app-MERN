@@ -59,7 +59,11 @@ const SeatMap = ({ seats, onUpdate }) => {
   };
 
   const bookedCount = seats.filter(s => s.isBooked && s.seatType === 'student').length;
-  const availableCount = 38 - bookedCount;
+  const studentSeatsCount = seats.filter(s => s.seatType === 'student').length;
+  const availableCount = studentSeatsCount - bookedCount;
+
+  const maxRow = seats.length > 0 ? Math.max(...seats.map(s => s.row)) : 18;
+  const rowCount = maxRow + 1;
 
   return (
     <div className="seatmap-wrapper">
@@ -75,7 +79,7 @@ const SeatMap = ({ seats, onUpdate }) => {
         </div>
         <div className="stat">
           <div className="stat-dot teacher"></div>
-          <span>Reserved: 2</span>
+          <span>Reserved: {teacherSeats.length}</span>
         </div>
         {hasBooking && (
           <div className="stat">
@@ -99,7 +103,7 @@ const SeatMap = ({ seats, onUpdate }) => {
       <div className="hall">
         <div className="hall-header">
           <h2 className="hall-title">🏛️ Dining Hall</h2>
-          <p className="hall-subtitle">Main Hall — 40 Seats</p>
+          <p className="hall-subtitle">Main Hall — {seats.length} Total Seats</p>
         </div>
 
         {/* Teacher Seats at the head */}
@@ -136,10 +140,10 @@ const SeatMap = ({ seats, onUpdate }) => {
           <div className="table-center">
             <div className="table-surface">
               <div className="table-line"></div>
-              {Array.from({ length: 19 }, (_, i) => (
+              {Array.from({ length: rowCount }, (_, i) => (
                 <div key={i} className="table-segment">
-                  <div className="table-prop">🍽️</div>
-                  <div className="table-divider"></div>
+                  <div className="table-prop left">🍽️</div>
+                  <div className="table-prop right">🍽️</div>
                 </div>
               ))}
             </div>
@@ -158,7 +162,6 @@ const SeatMap = ({ seats, onUpdate }) => {
           </div>
         </div>
       </div>
-
       {/* Details Side Panel / Drawer */}
       <div className={`details-drawer ${selectedSeat ? 'open' : ''}`}>
         <button className="close-drawer" onClick={() => setSelectedSeat(null)}>✕</button>
