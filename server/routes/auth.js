@@ -61,7 +61,7 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'An account with this email already exists.' });
     }
     console.error('Register error:', error);
-    res.status(500).json({ message: 'Server error. Please try again.' });
+    res.status(500).json({ message: `Server error debugging: ${error.message}` });
   }
 });
 
