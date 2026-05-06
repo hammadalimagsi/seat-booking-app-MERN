@@ -70,11 +70,11 @@ const SeatMap = ({ seats, onUpdate }) => {
       {/* Stats Bar */}
       <div className="flex flex-wrap gap-4 sm:gap-6 justify-center p-4 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl">
         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
+          <div className="w-3 h-3 rounded-full bg-slate-500 shadow-[0_0_10px_rgba(100,116,139,0.3)]"></div>
           <span>Available: {availableCount}</span>
         </div>
         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
-          <div className="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.3)]"></div>
+          <div className="w-3 h-3 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.3)]"></div>
           <span>Occupied: {bookedCount}</span>
         </div>
         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
