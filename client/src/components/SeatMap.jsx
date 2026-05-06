@@ -105,7 +105,7 @@ const SeatMap = ({ seats, onUpdate }) => {
 
       {/* Hall Layout Container */}
       <div className="bg-slate-900/40 border border-white/5 rounded-[2rem] p-6 sm:p-10 overflow-x-auto scrollbar-hide">
-        <div className="min-w-[400px] flex flex-col items-center">
+        <div className="min-w-[550px] flex flex-col items-center">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-white tracking-tight">🏛️ Dining Hall</h2>
             <p className="text-slate-500 text-xs mt-1 uppercase tracking-widest font-bold">Main Hall — {seats.length} Total Seats</p>
@@ -139,7 +139,7 @@ const SeatMap = ({ seats, onUpdate }) => {
             <div className="relative flex flex-col w-12 sm:w-16 mx-1 sm:mx-2 bg-gradient-to-b from-white/5 to-white/[0.02] border-x border-white/5">
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/20 via-purple-500/20 to-accent/20"></div>
               {Array.from({ length: rowCount }, (_, i) => (
-                <div key={i} className="h-[44px] xs:h-[48px] sm:h-[52px] mt-[6.5px] mb-[1.5px] first:mt-0 flex items-center justify-between px-1 z-10">
+                <div key={i} className="h-[52px] xs:h-[56px] sm:h-[62px] mt-[6.5px] mb-[1.5px] first:mt-0 flex items-center justify-between px-1 z-10">
                   <div className="text-[10px] opacity-40 grayscale hover:grayscale-0 transition-all">🍽️</div>
                   <div className="text-[10px] opacity-40 grayscale hover:grayscale-0 transition-all">🍽️</div>
                 </div>
