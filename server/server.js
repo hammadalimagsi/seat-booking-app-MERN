@@ -8,11 +8,19 @@ const seedSeats = require('./config/seedSeats');
 
 const app = express();
 
-// Connect to MongoDB & seed initial data
-connectDB().then(() => seedSeats());
+// Connect to MongoDB
+connectDB()
+  .then(() => {
+    // Only seed if we are not in production or for first time setup
+    // You can also manually trigger seeding via an endpoint if needed
+    seedSeats().catch(err => console.error('Seed error:', err));
+  })
+  .catch(err => console.error('Initial DB connect error:', err));
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 app.use(cors({
   origin: true,
   credentials: true
@@ -31,6 +39,10 @@ app.use('/api/auth', authLimiter, require('./routes/auth'));
 app.use('/api/seats', require('./routes/seats'));
 
 // Health check
+app.get('/', (req, res) => {
+  res.send('🚀 DineReserve API is running...');
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
